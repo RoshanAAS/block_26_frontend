@@ -4,7 +4,7 @@ import React, { useReducer } from "react";
 const initState = {
   name: "",
   email: "",
-  password: "",
+  pass: "",
 };
 const reducer = (state, { type, payload }) => {
   switch (type) {
@@ -16,15 +16,15 @@ const reducer = (state, { type, payload }) => {
       return { ...state, email: payload };
     }
 
-    case "SET_PASSWORD": {
-      return { ...state, password: payload };
+    case "SET_PASS": {
+      return { ...state, pass: payload };
     }
 
     case "RESET": {
       return initState;
     }
     default: {
-      return initState;
+      return state;
     }
   }
 };
@@ -34,7 +34,7 @@ const Signup = () => {
 
   const register = () => {
     axios
-      .post(`https://lilac-boa-hem.cyclic.app/users/register`, state)
+      .post(`https://breakable-drawers-eel.cyclic.app/users/register`, state)
       .then((res) => {
         console.log(res);
       })
@@ -80,15 +80,15 @@ const Signup = () => {
           }
         />
         <br />
-        <label>Enter your Password</label>
+        <label>Enter your Pass</label>
         <br />
         <input
-          value={state.password}
-          type="password"
-          placeholder="Enter Your password"
-          name="password"
+          value={state.pass}
+          type="pass"
+          placeholder="Enter Your pass"
+          name="pass"
           onChange={(e) =>
-            dispatch({ type: "SET_PASSWORD", payload: e.target.value })
+            dispatch({ type: "SET_PASS", payload: e.target.value })
           }
         />
         <br />
